@@ -1,12 +1,14 @@
 package cn.moon.step.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by chenhaonee on 2017/5/8.
  */
 @Entity
 public class User {
+    @Id
     private String username;
     private String password;
 
