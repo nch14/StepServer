@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by chenhaonee on 2017/5/8.
@@ -13,16 +14,23 @@ public class StepCount {
     @Id
     @GeneratedValue
     private long id;
-    private Timestamp timestamp;
-    private int count;
+    private Timestamp thisTimestamp;
+    private int thisCounts;
     private String username;
+    private boolean isSum =false;
 
     public StepCount() {
     }
 
-    public StepCount(Timestamp timestamp, int count, String username) {
-        this.timestamp = timestamp;
-        this.count = count;
+    public StepCount(Timestamp thisTimestamp, int thisCounts, String username) {
+        this.thisTimestamp = thisTimestamp;
+        this.thisCounts = thisCounts;
+        this.username = username;
+    }
+
+    public StepCount(Date thisTimestamp, int thisCounts, String username) {
+        this.thisTimestamp = new Timestamp(thisTimestamp.getTime());
+        this.thisCounts = thisCounts;
         this.username = username;
     }
 
@@ -34,20 +42,20 @@ public class StepCount {
         this.id = id;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public Timestamp getThisTimestamp() {
+        return thisTimestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setThisTimestamp(Timestamp thisTimestamp) {
+        this.thisTimestamp = thisTimestamp;
     }
 
-    public int getCount() {
-        return count;
+    public int getThisCounts() {
+        return thisCounts;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setThisCounts(int thisCounts) {
+        this.thisCounts = thisCounts;
     }
 
     public String getUsername() {
@@ -56,5 +64,13 @@ public class StepCount {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public boolean isSum() {
+        return isSum;
+    }
+
+    public void setSum(boolean sum) {
+        isSum = sum;
     }
 }
